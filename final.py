@@ -15,7 +15,7 @@ from TwitchChannelPointsMiner.classes.entities.Streamer import Streamer, Streame
 ## This will gather the data from the user before executing the script. This version of the script is only for grabbing twitch drops. 
 ## Theoretically It will watch a stream till it grabs the drop and then it will switch to a new streamer. If all streamers with drops are offline it will watch them in the order of the list.
 usernamedata = input("What is the username?: ").lower()
-filename = ("What file would you like to pull the streamers from?:")
+filename = input("What file would you like to pull the streamers from?:")
 twitch_miner = TwitchChannelPointsMiner(
     username=usernamedata,
     password="write-your-secure-psw",           # If no password will be provided, the script will ask interactively
@@ -81,7 +81,7 @@ twitch_miner = TwitchChannelPointsMiner(
 try:
     with open(filename, "r") as file:
             streamer_usernames = [line.strip() for line in file]
-except: FileNotFoundError:
+except: FileNotFoundError
     print(f"Error The file'{filename}' was not found.")
     exit(1) # Exit if file doesnt exist
 streamers = [Streamer(username) if i < 5 else username for i, username in enumerate(streamer_usernames)]
